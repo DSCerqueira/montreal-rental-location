@@ -7,7 +7,7 @@ A data-driven Power BI project that helps renters and property stakeholders iden
 - End-to-end case study
 - Stakeholder analysis
 - Exploratory data analysis
-- Power BI dashboards and semantic models
+- Power BI dashboards
 
 ## Tools
 - Power BI / Microsoft Fabric
