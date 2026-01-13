@@ -15,4 +15,4 @@ A data-driven Power BI project that helps renters and property stakeholders iden
 - Git & Power BI Dev Mode
 
 
-[Contribution guidelines]
+[Contribution guidelines]brief_summary.md
