@@ -1,6 +1,6 @@
-##Data pipeline, exploratory phase, and KPIs**
+## Data pipeline, exploratory phase, and KPIs**
 
-###Data Pipeline Architecture and Transformation Layers**
+### Data Pipeline Architecture and Transformation Layers**
 
 In my project, the data pipeline is organized into four transformation layers: **Bronze, Silver, Gold, and Presentation**. Each layer has a specific role in ensuring **data quality, scalability, and usability** for analytics and BI consumption.
 
