@@ -1,6 +1,6 @@
-**Data pipeline, exploratory phase, and KPIs**
+##Data pipeline, exploratory phase, and KPIs**
 
-**Data Pipeline Architecture and Transformation Layers**
+###Data Pipeline Architecture and Transformation Layers**
 
 In my project, the data pipeline is organized into four transformation layers: **Bronze, Silver, Gold, and Presentation**. Each layer has a specific role in ensuring **data quality, scalability, and usability** for analytics and BI consumption.
 
@@ -83,9 +83,9 @@ Target users for the presentation layer:
 Statistical analysis of rental data, including **outlier detection**, is an integral part of the pipeline. The outlier removal process runs **weekly during the data refresh cycle**. Listings with values **below the 1st percentile or above the 99th percentile** are excluded, as well as advertisements missing the number of bedrooms. This approach helps ensure reliable statistics and minimizes distortion caused by extreme or incomplete values.
 
 <iframe 
-  width="600" 
-  height="373.5" 
   src="https://app.fabric.microsoft.com/view?r=eyJrIjoiNTFiZTQwN2YtMDkyYy00N2RlLWJlOGQtZTc0YzMzN2M0YWE4IiwidCI6IjM4ZWVmNWE4LTY1YzEtNDBkYi1iMThlLTk2NTJkOTY3MWEyOSJ9&pageName=4d9f8beecabe80a52cc5" 
+  width="600" 
+  height="373.5"  
   frameborder="0" 
   allowFullScreen="true"
 ></iframe>
