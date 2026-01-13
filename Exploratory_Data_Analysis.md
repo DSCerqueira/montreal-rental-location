@@ -81,9 +81,7 @@ Target users for the presentation layer:
 **Rental Data Statistical Analysis and Outlier Treatment**
 
 Statistical analysis of rental data, including **outlier detection**, is an integral part of the pipeline. The outlier removal process runs **weekly during the data refresh cycle**. Listings with values **below the 1st percentile or above the 99th percentile** are excluded, as well as advertisements missing the number of bedrooms. This approach helps ensure reliable statistics and minimizes distortion caused by extreme or incomplete values.
-<img width="682" height="359" alt="statistic_1" src="https://github.com/user-attachments/assets/107db70b-4603-41ed-b110-d25333a46ad3" />
-
-<img width="680" height="357" alt="statistic_2" src="https://github.com/user-attachments/assets/efde0482-9045-48c3-81d2-015cc4651fb1" />
+<iframe title="statistic" width="600" height="373.5" src="https://app.fabric.microsoft.com/view?r=eyJrIjoiNTFiZTQwN2YtMDkyYy00N2RlLWJlOGQtZTc0YzMzN2M0YWE4IiwidCI6IjM4ZWVmNWE4LTY1YzEtNDBkYi1iMThlLTk2NTJkOTY3MWEyOSJ9&pageName=4d9f8beecabe80a52cc5" frameborder="0" allowFullScreen="true"></iframe>
 
 
 
