@@ -1,29 +1,29 @@
-## Data pipeline, exploratory phase, and KPIs**
+## Data pipeline, exploratory phase, and KPIs
 
-### Data Pipeline Architecture and Transformation Layers**
+### Data Pipeline Architecture and Transformation Layers
 
 In my project, the data pipeline is organized into four transformation layers: **Bronze, Silver, Gold, and Presentation**. Each layer has a specific role in ensuring **data quality, scalability, and usability** for analytics and BI consumption.
 
-**Data Ingestion - Raw and Bronze Layers**
+### Data Ingestion - Raw and Bronze Layers**
 
 - **Copy activity** to ingest data into the raw folder.
 - **Copy activity** to move and create tables in the Bronze layer.
 - **Notebook activity** to web scrape rental data, store it in the raw folder, and generate the Bronze table.
 
-**Data Transformation - Silver and Gold Layers**
+### Data Transformation - Silver and Gold Layers**
 
 - **Spark SQL notebooks** for data transformations.
 - **Python notebooks** for complex transformations, such as linking infractions data to postal codes.
 - **Spark SQL notebooks** to summarize, aggregate, and categorize data.
 
-**Data Presentation - Presentation Layer and Semantic Model**
+### Data Presentation - Presentation Layer and Semantic Model**
 
 - **Spark SQL notebooks** to create tables in the Presentation layer.
 - **Semantic model** connected to the Presentation layer using **Direct Lake mode**.
 
 I am using the semantic model in Direct Lake to leverage VertiPaq engine for fast in-memory analytics while taking advantage of Direct Lake's optimized querying capabilities for large-scale data.
 
-**Bronze Layer (Raw Ingestion)**
+### Bronze Layer (Raw Ingestion)**
 
 The Bronze layer ingests data directly from the raw source folders. At this stage, **only the necessary columns are selected and loaded**, without applying any transformations. The goal of this layer is to preserve the original data structure while limiting the dataset to relevant fields. No data cleansing or business logic is applied in this layer.
 
@@ -32,7 +32,7 @@ Target users for the gold layer:
 - Data engineers
 - IT department
 
-**Silver Layer (Data Cleansing and Business Rules)**
+### Silver Layer (Data Cleansing and Business Rules)**
 
 The Silver layer is where the **first and most significant transformations occur**. In this layer:
 
@@ -47,7 +47,7 @@ Target users for the gold layer:
 
 - Data engineers
 
-**Gold Layer (Analytical Data Model)**
+### Gold Layer (Analytical Data Model)**
 
 The Gold layer serves as the **foundation for the analytical data model**. Here:
 
@@ -63,7 +63,7 @@ Target users for the gold layer:
 - Data analysts
 - Data engineers
 
-**Presentation Layer (BI-Optimized Model)**
+### Presentation Layer (BI-Optimized Model)**
 
 Based on practical experience, I identified the need for an additional layer to better support BI tools such as **Power BI**. The **Presentation layer**, built on top of the Gold layer, is designed to:
 
@@ -78,7 +78,7 @@ Target users for the presentation layer:
 - Data analysts
 - Business analysts
 
-**Rental Data Statistical Analysis and Outlier Treatment**
+### Rental Data Statistical Analysis and Outlier Treatment**
 
 Statistical analysis of rental data, including **outlier detection**, is an integral part of the pipeline. The outlier removal process runs **weekly during the data refresh cycle**. Listings with values **below the 1st percentile or above the 99th percentile** are excluded, as well as advertisements missing the number of bedrooms. This approach helps ensure reliable statistics and minimizes distortion caused by extreme or incomplete values.
 
@@ -91,7 +91,7 @@ Statistical analysis of rental data, including **outlier detection**, is an inte
 ></iframe>
 
 
-**KPIs and method used**
+### KPIs and method used**
 
 The objective of the dashboard is to support users in selecting the most suitable location in Montreal based on their individual priorities. The following KPIs enable data-driven decision-making by evaluating each borough against key criteria related to affordability, safety, accessibility, and public services:
 
@@ -104,7 +104,7 @@ The objective of the dashboard is to support users in selecting the most suitabl
 - Secondary school grade
 - Day care ratio per 0 to 4 years old habitants aged
 
-**KPI methodology**
+### KPI methodology**
 
 The Island of Montreal is divided by locations. Each location is ranked from 1 to number of locations for each evaluation criterion. To standardize comparisons across locations, the ranks are normalized by dividing them by the total number of locations. The normalized rank represents the score of a location for a given criterion and is calculated as:
 
@@ -112,7 +112,7 @@ The scores are calculated dynamically in Power BI using DAX expressions, allowin
 
 At the end of the calculation, the dashboard will highlight the **top three locations**, ranked from 1 to 3. The **number 1 location** represents the best choice for the user, based on the weighted relevance of the selected criteria. The ranking is fully dynamic and updates automatically according to the user's preferences.
 
-**Data pipeline summary**
+### Data pipeline summary**
 
 Raw Data
 
@@ -126,9 +126,9 @@ Raw Data
 | Day care | Data about the number of places by day care | Quebec open data | <https://www.donneesquebec.ca/> |
 | Schools | Number of enrolled students by pre, primary, and secondary school.  <br>Secondary school evaluation (grade) | Quebec open data  <br>Fraser Institute | <https://www.donneesquebec.ca/>  <br><https://www.fraserinstitute.org/> |
 
-**Medallion architecture and presentation layer**
+### Medallion architecture and presentation layer**
 
-**Semantic Model - Star schema**
+### Semantic Model - Star schema**
 
 Dimension table:
 
