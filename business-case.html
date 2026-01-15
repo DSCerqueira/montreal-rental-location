@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<!--
+    Editorial by HTML5 UP
+    html5up.net | @ajlkn
+    Free for personal and commercial use under the CCA 3.0 license
+-->
+<html>
+  <head>
+    <title>Business Case | Montreal Rental Analytics</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <link rel="stylesheet" href="assets/css/main.css" />
+  </head>
+
+  <body class="is-preload">
+    <div id="wrapper">
+      <!-- Main -->
+      <div id="main">
+        <div class="inner">
+          <header id="header">
+            <a href="index.html" class="logo"
+              ><strong>Montreal Rental Analytics</strong> · Business Case</a
+            >
+          </header>
+
+          <section>
+            <header class="main">
+              <h1>Business Case</h1>
+            </header>
+
+            <h2>Executive Summary</h2>
+            <p>
+              This project delivers a data-driven dashboard to help renters,
+              families, newcomers, and shared households identify the borough on
+              the Island of Montreal that best fits their needs. By
+              consolidating rental prices, safety, commute times, and access to
+              schools, daycare, and public services, the dashboard enables
+              objective comparison and prioritization of boroughs based on
+              individual preferences. Success is measured by ease of use, data
+              reliability, and meaningful insights that guide informed rental
+              decisions. It showcases the end-to-end process—from data gathering
+              and transformation to modeling and visualization.
+            </p>
+
+            <hr class="major" />
+
+            <h2>Introduction</h2>
+            <p>
+              Finding a suitable rental on the Island of Montreal is a complex
+              task for individuals, families, and shared households. Factors
+              such as rental prices, safety, commute times, and access to
+              essential services like schools and daycare vary widely across
+              boroughs. This information is often scattered across multiple
+              sources, making it challenging for renters to objectively compare
+              locations and identify the areas that best meet their needs and
+              priorities. Although this information is available online, there
+              is currently no tool that integrates all these factors and
+              evaluates locations according to individual requirements.
+            </p>
+
+            <hr class="major" />
+
+            <h2>Business Objectives</h2>
+            <p>
+              The objective of this case study is to design and deliver a
+              data-driven dashboard that consolidates multiple public and
+              third-party data sources to help renters identify the most
+              suitable borough on the Island of Montreal based on their
+              individual priorities.
+            </p>
+            <ul>
+              <li>Simplify rental location decision-making</li>
+              <li>
+                Compare Montreal boroughs using standardized and objective
+                indicators
+              </li>
+              <li>
+                Prioritize factors based on individual needs (e.g.,
+                affordability vs. commute time)
+              </li>
+              <li>
+                Identify boroughs that offer the best overall balance of cost,
+                accessibility, safety, and quality of life
+              </li>
+              <li>
+                Support landlords to determine competitive rental pricing based
+                on their apartment’s location.
+              </li>
+            </ul>
+            <p>
+              The dashboard should recommend at least three locations for users,
+              ranked from top 1 to 3, and provide explanations for why each
+              location was selected.
+            </p>
+
+            <hr class="major" />
+
+            <h2>Proposed Solution</h2>
+            <p>
+              The project aims to gather data for eight key criteria: price,
+              safety, commute time, walkability, public transportation, school
+              availability, secondary school grades, and daycare availability.
+            </p>
+            <p>
+              The methodology is based on ranking Montreal locations for each
+              criterion and scoring them according to both their rank and the
+              relevance assigned by the user. Users can easily select the
+              criteria most important to them and assign a weight— ranging from
+              zero, low, medium, moderate, to high—to indicate its importance.
+            </p>
+            <p>
+              Once the criteria and weights are set, the dashboard highlights
+              the top three recommended locations and provides explanations for
+              why each location was selected. Users can explore different
+              configurations to identify the location that best fits their
+              needs. Additionally, the dashboard reveals less obvious
+              characteristics of boroughs that may be important for
+              decision-making.
+            </p>
+
+            <hr class="major" />
+
+            <h2>Risk Analysis</h2>
+            <p>
+              Developing and implementing this project involves several
+              potential risks, including:
+            </p>
+            <ul>
+              <li>
+                <strong>Data Quality:</strong> Incomplete or inconsistent data
+                from multiple sources could affect accuracy. Mitigation:
+                validate, clean, and standardize data.
+              </li>
+              <li>
+                <strong>Technical/Platform:</strong> Microsoft Fabric trial
+                limitations may restrict storage or performance. Mitigation:
+                prioritize core features and optimize models.
+              </li>
+              <li>
+                <strong>Time &amp; Resources:</strong> Single developer handling
+                all roles may impact timelines. Mitigation: focus on core
+                functionality and set realistic milestones.
+              </li>
+              <li>
+                <strong>User Experience:</strong> Weighting and ranking system
+                may be confusing. Mitigation: provide clear instructions,
+                tooltips, and examples.
+              </li>
+              <li>
+                <strong>Analytical Bias:</strong> Certain criteria may dominate
+                rankings. Mitigation: ensure transparency and test multiple
+                weighting scenarios.
+              </li>
+            </ul>
+
+            <hr class="major" />
+
+            <h2>Implementation Plan</h2>
+            <p>The project is divided into three phases.</p>
+
+            <h3>Phase 1 – Requirements gathering and data collection</h3>
+            <ul>
+              <li>Identify the requirements for the projects</li>
+              <li>Identify data sources</li>
+              <li>Define KPIs and methodologies to rank locations</li>
+              <li>Define project scope, limitations, and deadlines</li>
+              <li>
+                Planning the architecture and dashboard visualization target
+              </li>
+            </ul>
+
+            <h3>Phase 2 – Development</h3>
+            <ul>
+              <li>Gathering data</li>
+              <li>Develop medallion architecture and presentations layer</li>
+              <li>Develop PBI semantic model</li>
+              <li>Create KPIs, metrics, and dashboard</li>
+              <li>Stablish refresh schedule and method</li>
+              <li>Create development pipelines</li>
+              <li>Build project documentation</li>
+            </ul>
+
+            <h3>Phase 3 – Integration and testing</h3>
+            <ul>
+              <li>Validate KPIs and dashboard insights</li>
+              <li>
+                Integrate dashboard to GitHub and make it available to public
+                access
+              </li>
+              <li>Integrate devop pipeline to GitHub</li>
+            </ul>
+
+            <hr class="major" />
+
+            <h2>Project Continuous Development</h2>
+            <p>
+              There are many additional insights that can be incorporated into
+              this project; therefore, continuous review of the project’s
+              objectives, requirements, and KPIs is essential. The next phase of
+              dashboard development will focus on expanding the criteria used to
+              evaluate rental locations.
+            </p>
+            <p>
+              The following dimensions are planned for inclusion in the next
+              version:
+            </p>
+            <ul>
+              <li>Household income by location</li>
+              <li>Age group distribution</li>
+              <li>Official language by location</li>
+              <li>Availability of hospitals and healthcare centers</li>
+            </ul>
+            <p>
+              In a subsequent version, machine learning techniques will be
+              applied to identify relationships between these criteria and
+              rental prices. While the current dashboard supports renters in
+              identifying locations based on their personal priorities, the next
+              iteration will also support property owners by estimating expected
+              rental prices based on location-specific characteristics.
+            </p>
+            <p>
+              From the development perspective, the project will adopt Power BI
+              Developer Mode with Git integration to support collaborative
+              development and establish a scalable, multi-developer analytics
+              framework.
+            </p>
+
+            <hr class="major" />
+
+            <h2>Conclusion</h2>
+            <p>
+              Finding a suitable borough in Montreal is challenging for renters
+              due to fragmented information and limited visibility into
+              location-related issues. This solution addresses the problem by
+              providing a unified, data-driven dashboard that helps tenants
+              evaluate and compare locations based on key criteria such as
+              price, safety, accessibility, transportation, commute time, and
+              education services.
+            </p>
+            <p>
+              By prioritizing their needs, users receive clear recommendations
+              for the top three locations that best match their preferences,
+              along with explanations and access to rental listings. The
+              platform reduces decision risk and enables more confident,
+              informed rental choice.
+            </p>
+          </section>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <div id="sidebar">
+        <div class="inner">
+          <nav id="menu">
+            <header class="major"><h2>Menu</h2></header>
+            <ul>
+              <li><a href="index.html">Homepage</a></li>
+              <li><a href="case-study.html">Case Study</a></li>
+              <li><a href="business-case.html">Business Case</a></li>
+              <li><a href="exploratory-data-analysis.html">EDA</a></li>
+              <li>
+                <a href="data-pipeline-kpis.html">Data Pipeline &amp; KPIs</a>
+              </li>
+              <li>
+                <a href="stakeholder-register.html">Stakeholder Register</a>
+              </li>
+            </ul>
+          </nav>
+
+          <footer id="footer">
+            <p class="copyright">
+              © 2026 Daniel Cerqueira · Design:
+              <a href="https://html5up.net">HTML5 UP</a>
+            </p>
+          </footer>
+        </div>
+      </div>
+    </div>
+
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Data Pipeline & KPIs | Montreal Rental Analytics</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <link rel="stylesheet" href="assets/css/main.css" />
+  </head>
+
+  <body class="is-preload">
+    <div id="wrapper">
+      <div id="main">
+        <div class="inner">
+          <header id="header">
+            <a href="index.html" class="logo"
+              ><strong>Montreal Rental Analytics</strong> · Data Pipeline &amp;
+              KPIs</a
+            >
+          </header>
+
+          <section>
+            <header class="main">
+              <h1>Data Pipeline, Exploratory Phase, and KPIs</h1>
+            </header>
+
+            <h2>Data Pipeline Architecture and Transformation Layers</h2>
+            <p>
+              In my project, the data pipeline is organized into four
+              transformation layers: Bronze, Silver, Gold, and Presentation.
+              Each layer has a specific role in ensuring data quality,
+              scalability, and usability for analytics and BI consumption.
+            </p>
+
+            <h3>Data Ingestion – Raw and Bronze Layers</h3>
+            <ul>
+              <li>Copy activity to ingest data into the raw folder.</li>
+              <li>
+                Copy activity to move and create tables in the Bronze layer.
+              </li>
+              <li>
+                Notebook activity to web scrape rental data, store it in the raw
+                folder, and generate the Bronze table.
+              </li>
+            </ul>
+
+            <h3>Data Transformation – Silver and Gold Layers</h3>
+            <ul>
+              <li>Spark SQL notebooks for data transformations.</li>
+              <li>
+                Python notebooks for complex transformations, such as linking
+                infractions data to postal codes.
+              </li>
+              <li>
+                Spark SQL notebooks to summarize, aggregate, and categorize
+                data.
+              </li>
+            </ul>
+
+            <h3>Data Presentation – Presentation Layer and Semantic Model</h3>
+            <ul>
+              <li>
+                Spark SQL notebooks to create tables in the Presentation layer.
+              </li>
+              <li>
+                Semantic model connected to the Presentation layer using Direct
+                Lake mode.
+              </li>
+              <li>
+                Direct Lake leverages VertiPaq for fast analytics while
+                optimizing queries for large-scale data.
+              </li>
+            </ul>
+
+            <hr class="major" />
+
+            <h2>Layer Definitions</h2>
+
+            <h3>Bronze Layer (Raw Ingestion)</h3>
+            <p>
+              The Bronze layer ingests data directly from the raw source
+              folders. At this stage, only the necessary columns are selected
+              and loaded, without applying any transformations. No data
+              cleansing or business logic is applied.
+            </p>
+            <p><strong>Target users:</strong> Data engineers, IT department</p>
+
+            <h3>Silver Layer (Data Cleansing and Business Rules)</h3>
+            <p>
+              The Silver layer is where the first and most significant
+              transformations occur:
+            </p>
+            <ul>
+              <li>
+                Duplicate records (such as repeated advertisements) are removed
+              </li>
+              <li>
+                Null values are either eliminated or replaced with meaningful
+                defaults
+              </li>
+              <li>
+                Data inconsistencies and ambiguities are identified and treated
+              </li>
+              <li>
+                Business rules are applied, such as linking each advertisement
+                to its corresponding neighborhood
+              </li>
+            </ul>
+            <p><strong>Target users:</strong> Data engineers</p>
+
+            <h3>Gold Layer (Analytical Data Model)</h3>
+            <p>
+              The Gold layer serves as the foundation for the analytical data
+              model:
+            </p>
+            <ul>
+              <li>Fact and Dimension tables are clearly defined</li>
+              <li>Aggregations and summarizations are created</li>
+              <li>
+                Statistical analyses are applied to identify and remove
+                outliers, reducing bias in the results
+              </li>
+            </ul>
+            <p>
+              <strong>Target users:</strong> Data scientists, data analysts,
+              data engineers
+            </p>
+
+            <h3>Presentation Layer (BI-Optimized Model)</h3>
+            <p>
+              The Presentation layer is built on top of the Gold layer to better
+              support BI tools such as Power BI:
+            </p>
+            <ul>
+              <li>
+                Create a data model optimized for specific project and reporting
+                needs
+              </li>
+              <li>Apply additional aggregations and filters</li>
+              <li>
+                Build tailored tables to address project-specific requirements
+              </li>
+            </ul>
+            <p>
+              <strong>Target users:</strong> Data analysts, business analysts
+            </p>
+
+            <hr class="major" />
+
+            <h2>Rental Data Statistical Analysis and Outlier Treatment</h2>
+            <p>
+              The outlier removal process runs weekly during the data refresh
+              cycle. Listings with values below the 1st percentile or above the
+              99th percentile are excluded, as well as advertisements missing
+              the number of bedrooms. This approach helps ensure reliable
+              statistics and minimizes distortion caused by extreme or
+              incomplete values.
+            </p>
+
+            <hr class="major" />
+
+            <h2>KPIs and Method Used</h2>
+            <p>
+              The objective of the dashboard is to support users in selecting
+              the most suitable location in Montreal based on their individual
+              priorities. The following KPIs evaluate each borough against key
+              criteria related to affordability, safety, accessibility, and
+              public services:
+            </p>
+            <ul>
+              <li>Average of Price</li>
+              <li>Infraction ratio per 1,000 habitants</li>
+              <li>Average of walk score</li>
+              <li>Average of transit score</li>
+              <li>Average of commute time score*</li>
+              <li>School place ratio per 5 to 19 years old habitants aged</li>
+              <li>Secondary school grade</li>
+              <li>Day care ratio per 0 to 4 years old habitants aged</li>
+            </ul>
+
+            <h3>KPI Methodology</h3>
+            <p>
+              The Island of Montreal is divided by locations. Each location is
+              ranked from 1 to number of locations for each evaluation
+              criterion. To standardize comparisons across locations, the ranks
+              are normalized by dividing them by the total number of locations.
+            </p>
+            <p>
+              The scores are calculated dynamically in Power BI using DAX
+              expressions, allowing results to automatically adapt to user
+              selections and filter context. Users can assign a relevance level
+              to each criterion, ranging from zero (not relevant) to high
+              relevance. These relevance levels are used as weights in the
+              calculation of the final location score.
+            </p>
+            <p>
+              At the end of the calculation, the dashboard will highlight the
+              top three locations, ranked from 1 to 3. The number 1 location
+              represents the best choice for the user, based on the weighted
+              relevance of the selected criteria.
+            </p>
+
+            <hr class="major" />
+
+            <h2>Data Pipeline Summary</h2>
+            <div class="table-wrapper">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Raw Data</th>
+                    <th>Description</th>
+                    <th>Data Source</th>
+                    <th>Link</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Rental Data</td>
+                    <td>
+                      A Spark notebook runs a web scrape collecting data from
+                      Kijiji and saving into the raw folder
+                    </td>
+                    <td>Kijiji</td>
+                    <td>https://www.kijiji.ca/</td>
+                  </tr>
+                  <tr>
+                    <td>Montreal Infractions</td>
+                    <td>Number of infractions registered in Montreal</td>
+                    <td>Montreal Open Data</td>
+                    <td>https://donnees.montreal.ca/</td>
+                  </tr>
+                  <tr>
+                    <td>Census Data</td>
+                    <td>Population by Montreal postal code with age group</td>
+                    <td>Statistics Canada</td>
+                    <td>https://www12.statcan.gc.ca</td>
+                  </tr>
+                  <tr>
+                    <td>Walk and Transit Score</td>
+                    <td>Walkability and transit score data</td>
+                    <td>Walkscore</td>
+                    <td>https://www.walkscore.com/</td>
+                  </tr>
+                  <tr>
+                    <td>Commute Time</td>
+                    <td>Open geodata used to calculate travel time</td>
+                    <td>HeiGit</td>
+                    <td>https://heigit.org/</td>
+                  </tr>
+                  <tr>
+                    <td>Daycare</td>
+                    <td>Data about the number of places by daycare</td>
+                    <td>Quebec Open Data</td>
+                    <td>https://www.donneesquebec.ca/</td>
+                  </tr>
+                  <tr>
+                    <td>Schools</td>
+                    <td>
+                      Enrolled students by school + secondary school evaluation
+                      (grade)
+                    </td>
+                    <td>Quebec Open Data / Fraser Institute</td>
+                    <td>
+                      https://www.donneesquebec.ca/ ·
+                      https://www.fraserinstitute.org/
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <hr class="major" />
+
+            <h2>Semantic Model – Star Schema</h2>
+            <p><strong>Dimension table:</strong> mtl_locations</p>
+            <p><strong>Fact tables:</strong></p>
+            <ul>
+              <li>mtl_rent</li>
+              <li>mtl_infraction_year</li>
+              <li>mtl_age_group</li>
+              <li>mtl_walkscore_commute_time</li>
+              <li>mtl_daycare</li>
+              <li>mtl_schools</li>
+            </ul>
+            <p>
+              The dimension table is linked to the fact tables via postal codes,
+              which are grouped into locations.
+            </p>
+          </section>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <div id="sidebar">
+        <div class="inner">
+          <nav id="menu">
+            <header class="major"><h2>Menu</h2></header>
+            <ul>
+              <li><a href="index.html">Homepage</a></li>
+              <li><a href="case-study.html">Case Study</a></li>
+              <li><a href="business-case.html">Business Case</a></li>
+              <li><a href="exploratory-data-analysis.html">EDA</a></li>
+              <li>
+                <a href="data-pipeline-kpis.html">Data Pipeline &amp; KPIs</a>
+              </li>
+              <li>
+                <a href="stakeholder-register.html">Stakeholder Register</a>
+              </li>
+            </ul>
+          </nav>
+
+          <footer id="footer">
+            <p class="copyright">
+              © 2026 Daniel Cerqueira · Design:
+              <a href="https://html5up.net">HTML5 UP</a>
+            </p>
+          </footer>
+        </div>
+      </div>
+    </div>
+
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>
