@@ -1,4 +1,7 @@
-# montreal-rental-location
+# montreal-rental-location 
+## Live Page
+[Montreal Rental Location](https://dscerqueira.github.io/montreal-rental-location/)
+
 ## Overview
 A data-driven Power BI project that helps renters and property stakeholders identify optimal rental locations in Montreal using multi-criteria analysis.
 
